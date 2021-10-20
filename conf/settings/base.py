@@ -17,6 +17,7 @@ APPS_DIR = ROOT_DIR.path('apps')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+print('VERIFIACAR EL BASE DIR',BASE_DIR)
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -35,6 +36,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = ['simple_history']
 LOCAL_APPS = [
 	'apps.users',
+	'apps.contacts',
 	'apps.utils',
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

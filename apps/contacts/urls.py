@@ -8,5 +8,5 @@ from django.urls import path
 from .views.contacts import *
 
 urlpatterns = [
-    path('index',ContactView.as_view(),name="contact"),    
+    path('contact/',ContactView.as_view(),name="contact"),    
 ]

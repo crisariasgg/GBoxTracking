@@ -36,6 +36,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = ['simple_history']
 LOCAL_APPS = [
 	'apps.users',
+	'apps.tracking',
 	'apps.contacts',
 	'apps.utils',
 ]

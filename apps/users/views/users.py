@@ -55,22 +55,6 @@ class IndexView(TemplateView):
 		pass
 
 
-class TrackingView(TemplateView):
-	template_name = 'tracking.html'
-	paginate_by = 5
-				
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		user = User.objects.get(pk=self.request.user.pk)
-		context.update({
-			'user': user,
-		})
-		return context
-	
-	def post(self, request):
-		pass
-
-
 class LogoutView(View):
 	def get(self, request):
 		logout(request)

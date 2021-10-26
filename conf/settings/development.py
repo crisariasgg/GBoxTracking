@@ -11,6 +11,7 @@ INSTALLED_APPS += ['debug_toolbar']
 
 MIDDLEWARE += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 
@@ -38,3 +39,5 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS':False,
     'SHOW_TOOLBAR_CALLBACK': show_toolbar
 }
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

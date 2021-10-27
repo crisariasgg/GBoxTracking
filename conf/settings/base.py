@@ -5,10 +5,8 @@
 import environ
 from pathlib import Path
 
-
 env = environ.Env()
 environ.Env.read_env()
-
 # =================APPS DIR=================
 ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('apps')

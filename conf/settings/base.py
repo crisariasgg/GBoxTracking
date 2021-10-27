@@ -2,11 +2,10 @@
 
 
 # Standard library
-import environ
+import environ,os
 from pathlib import Path
 
-env = environ.Env()
-environ.Env.read_env()
+
 # =================APPS DIR=================
 ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('apps')
@@ -16,7 +15,7 @@ APPS_DIR = ROOT_DIR.path('apps')
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # =================BASE=================
-DEBUG = env.bool('DJANGO_DEBUG', False)
+DEBUG = os.environ.get('DEBUG',True)
 
 # =================LANGUAGE AND TIMEZONE=================
 LANGUAGE_CODE = 'en-us'
@@ -30,11 +29,11 @@ USE_TZ = True
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env('DATABASE_NAME'),
-        "USER": env('DATABASE_USER'),
-        "PASSWORD": env('DATABASE_PASSWORD'),
-        "HOST": ('DATABASE_HOST'),
-        "PORT": env('DATABASE_PORT'),
+        "NAME": "gboxtracking",
+        "USER": 'postgres',
+        "PASSWORD": '@Minimalista1',
+        "HOST": 'localhost',
+        "PORT": '5432',
     }
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True

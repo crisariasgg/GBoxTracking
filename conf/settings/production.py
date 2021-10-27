@@ -2,9 +2,9 @@ from .base import *
 import dj_database_url
 from decouple import config
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = env.bool('DEBUG')
+DEBUG = os.environ.get('DEBUG')
 
 
 ALLOWED_HOSTS = ['gboxtracking-test.herokuapp.com']

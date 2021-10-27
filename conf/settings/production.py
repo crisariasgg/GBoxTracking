@@ -1,9 +1,20 @@
 from .base import *
 
 
-DEBUG = False
+DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = ['ip address','www.website.com']
+
+ALLOWED_HOSTS = ['gboxtracking-test.herokuapp.com']
+
+
+MIDDLEWARE += [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+
+
+# Gunicorn
+INSTALLED_APPS += ['gunicorn']  # noqa F405
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -20,9 +31,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_pycopg2',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": env('DATABASE_NAME'),
+        "USER": env('DATABASE_USER'),
+        "PASSWORD": env('DATABASE_PASSWORD'),
+        "HOST": ('DATABASE_HOST'),
+        "PORT": env('DATABASE_PORT'),
     }
 }
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

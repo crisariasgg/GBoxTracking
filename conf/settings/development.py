@@ -1,17 +1,43 @@
 from .base import *
 
+def show_toolbar(request):
+    return True
+
+# =================BASE=================
 DEBUG = env.bool('DEBUG')
 
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1',"*"]
+# =================SECURITY=================
+SECRET_KEY = env('SECRET_KEY')
+ALLOWED_HOSTS = [
+    "localhost",
+    "0.0.0.0",
+    "127.0.0.1",
+]
 
 
-INSTALLED_APPS += ['debug_toolbar']
+# =================TEMPLATES=================
+TEMPLATES[0]['OPTIONS']['debug'] = DEBUG  # NOQA
+
+
+# =================CACHES=================
+CACHES = {
+	'default': {
+		'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+		'LOCATION': '',
+	}
+}
+# =================EMAIL=================
+EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+
+# =================APPS=================
+INSTALLED_APPS += ['django_extensions','debug_toolbar']
 
 
 MIDDLEWARE += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 
@@ -32,12 +58,8 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.profiling.ProfilingPanel',
 ]
 
-def show_toolbar(request):
-    return True
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS':False,
     'SHOW_TOOLBAR_CALLBACK': show_toolbar
 }
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

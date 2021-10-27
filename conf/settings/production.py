@@ -1,4 +1,6 @@
 from .base import *
+import dj_database_url
+from decouple import config
 
 SECRET_KEY = env('SECRET_KEY')
 
@@ -35,12 +37,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env('DATABASE_NAME'),
-        "USER": env('DATABASE_USER'),
-        "PASSWORD": env('DATABASE_PASSWORD'),
-        "HOST": ('DATABASE_HOST'),
-        "PORT": env('DATABASE_PORT'),
+        dj_database_url.config(default=config('DATABASE_URL'))
     }
 }
 

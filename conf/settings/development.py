@@ -1,12 +1,13 @@
 from .base import *
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 def show_toolbar(request):
     return True
 
 # =================BASE=================
-DEBUG = os.environ.get('DEBUG')
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # =================SECURITY=================
 ALLOWED_HOSTS = [
@@ -28,7 +29,7 @@ CACHES = {
 	}
 }
 # =================EMAIL=================
-EMAIL_BACKEND = os.environ.get('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 

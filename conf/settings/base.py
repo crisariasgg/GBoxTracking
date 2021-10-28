@@ -2,9 +2,9 @@
 
 
 # Standard library
-import environ,os
+import os
+import environ
 from pathlib import Path
-
 
 # =================APPS DIR=================
 ROOT_DIR = environ.Path(__file__) - 3
@@ -14,8 +14,9 @@ APPS_DIR = ROOT_DIR.path('apps')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+
 # =================BASE=================
-DEBUG = os.environ.get('DEBUG',True)
+DEBUG = True
 
 # =================LANGUAGE AND TIMEZONE=================
 LANGUAGE_CODE = 'en-us'
@@ -115,7 +116,7 @@ MIDDLEWARE = [
 STATIC_ROOT = str(ROOT_DIR('staticfiles'))
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    str(APPS_DIR.path('static')),
+    str(ROOT_DIR.path('static')),
 ]
 
 STATICFILES_FINDERS = [

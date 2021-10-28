@@ -5,6 +5,8 @@
 import os
 import environ
 from pathlib import Path
+env = environ.Env()
+environ.Env.read_env()
 
 # =================APPS DIR=================
 ROOT_DIR = environ.Path(__file__) - 3
@@ -27,14 +29,16 @@ USE_L10N = True
 USE_TZ = True
 
 # =================DATABASE=================
+
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "gboxtracking",
-        "USER": 'postgres',
-        "PASSWORD": '@Minimalista1',
-        "HOST": 'localhost',
-        "PORT": '5432',
+        "NAME": env('DATABASE_NAME'),
+        "USER": env('DATABASE_USER'),
+        "PASSWORD": env('DATABASE_PASSWORD'),
+        "HOST": env('DATABASE_HOST'),
+        "PORT": env('DATABASE_PORT'),
     }
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True

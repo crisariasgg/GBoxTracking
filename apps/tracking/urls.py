@@ -8,5 +8,5 @@ from django.urls import path
 from .views.tracking import *
 
 urlpatterns = [
-    path('tracking/',TrackingView.as_view(),name="tracking"),    
+    path('tracking-search/',TrackingSearchView.as_view(),name="tracking_search"),    
 ]

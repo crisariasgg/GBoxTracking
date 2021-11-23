@@ -62,3 +62,4 @@ wcwidth==0.2.5
 whitenoise==5.3.0
 wrapt==1.13.3
 zeep==4.1.0
+psycopg2

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-lg-9 col-12 mx-auto">
+    <div class="card card-body mt-4">
+
+
+    <form name="search" method="POST">  
+        {% csrf_token %}
+        {{ form.tracking_number }}
+        <div class="d-flex justify-content-end mt-4">
+            <button type="submit" name="button" class="btn bg-gradient-primary m-0 ms-2">Buscar paquete</button>
+        </div>
+    </form> 
+
+    </div>
+</div>
+
+{% endblock %}
+{% block javascript %}
+{% endblock %}
